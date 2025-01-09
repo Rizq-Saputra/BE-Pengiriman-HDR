@@ -1,0 +1,75 @@
+###
+POST http://localhost:5000/api/kendaraan
+Content-Type: application/json
+
+{
+  "plat_nomor": "B1234X3YZ",
+  "jenis_kendaraan": "Truck",
+  "kapasitas": 10,
+  "status_kendaraan": "tersedia"
+}
+
+###
+POST http://localhost:5000/api/supir
+Content-Type: application/json
+
+{
+  "nama_supir": "Product 1",
+  "no_telepon": "099333333",
+  "jumlah_antaran": 1,
+  "status_supir": "available",
+  "password": "password"
+}
+
+###
+POST http://localhost:5000/api/pelanggan
+Content-Type: application/json
+
+{
+  "nama_pelanggan": "Product 1",
+  "no_telepon": "This a test product",
+  "email": "eemail@gmail.com"
+}
+
+###
+POST http://localhost:5000/api/barang
+Content-Type: application/json
+
+{
+  "nama_barang": "Product 3",
+  "jenis_barang": "This is a test product",
+  "ukuran": "email@gmail.com",
+  "berat": 1,
+  "harga": 1000
+}
+
+
+
+
+
+
+###
+POST http://localhost:5000/api/pengiriman
+Content-Type: application/json
+
+{
+  "tanggal_pengiriman": "2024-11-17T10:00:00.000Z",
+  "status_pengiriman": "pending",
+  "alamat_tujuan": "Jl. Kebon Jeruk No. 45, Jakarta",
+  "deskripsi": "Pengiriman bahan makanan",
+  "kendaraan_id": 1,
+  "supir_id": 1,
+  "pelanggan_id": 1
+}
+
+###
+POST http://localhost:5000/api/detail-pengiriman
+Content-Type: application/json
+
+{
+  "jumlah_barang": 3,
+  "subtotal": 100000,
+  "pengiriman_id": 4,
+  "barang_id": 2
+}
+

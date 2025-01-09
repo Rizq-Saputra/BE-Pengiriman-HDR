@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  admin_id     Int     @id @default(autoincrement())
+  username     String  @unique
+  password     String
+  token        String?
+  refreshToken String?
+}
+
+model Kendaraan {
+  kendaraan_id     Int    @id @default(autoincrement())
+  plat_nomor       String @unique
+  jenis_kendaraan  String
+  kapasitas        Int
+  status_kendaraan String
+
+  // Relations
+  Pengiriman Pengiriman[]
+}
+
+model Supir {
+  supir_id       Int     @id @default(autoincrement())
+  nama_supir     String
+  no_telepon     String  @unique
+  jumlah_antaran Int
+  status_supir   String
+  gambar_supir   String?
+  password       String
+  refreshToken   String? @db.Text // Add @db.Text to handle long tokens
+
+  // Relations
+  Pengiriman Pengiriman[]
+}
+
+model Pengiriman {
+  pengiriman_id      Int      @id @default(autoincrement())
+  tanggal_pengiriman DateTime
+  status_pengiriman  String
+  bukti_pengiriman   String?
+  alamat_tujuan      String
+  pembayaran         String
+  deskripsi          String?
+  ongkir             Decimal?
+  total              Decimal
+  resi               String?  @unique
+
+  // Foreign keys
+  kendaraan_id Int
+  supir_id     Int
+  pelanggan_id Int
+
+  // Relations
+  Kendaraan        Kendaraan          @relation(fields: [kendaraan_id], references: [kendaraan_id])
+  Supir            Supir              @relation(fields: [supir_id], references: [supir_id])
+  Pelanggan        Pelanggan          @relation(fields: [pelanggan_id], references: [pelanggan_id])
+  DetailPengiriman DetailPengiriman[] @relation("PengirimanToDetail")
+}
+
+model Pelanggan {
+  pelanggan_id   Int          @id @default(autoincrement())
+  nama_pelanggan String
+  no_telepon     String       @unique
+  email          String       @unique
+  // Relations
+  Pengiriman     Pengiriman[]
+}
+
+model DetailPengiriman {
+  detail_pengiriman_id Int     @id @default(autoincrement())
+  jumlah_barang        Int
+  subtotal             Decimal
+
+  // Foreign keys
+  pengiriman_id Int
+  barang_id     Int
+
+  // Relations
+  Pengiriman Pengiriman @relation("PengirimanToDetail", fields: [pengiriman_id], references: [pengiriman_id], onDelete: Cascade)
+  Barang     Barang     @relation(fields: [barang_id], references: [barang_id])
+}
+
+model Barang {
+  barang_id   Int     @id @default(autoincrement())
+  nama_barang String
+  kategori    String
+  berat       Decimal
+  harga       Decimal
+
+  // Relations
+  DetailPengiriman DetailPengiriman[]
+}

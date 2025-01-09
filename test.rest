@@ -1,0 +1,39 @@
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "password123"
+}
+
+###
+GET http://localhost:5000/api/pelanggan
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE3MzMwMzQzODAsImV4cCI6MTczMzAzNTI4MH0.wJKHqQbzK8pmLrmHt6cc4lNyJd1WYOVt4MaKLNEhr5g
+
+###
+POST http://localhost:5000/api/products
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE3MzMwMzQzODAsImV4cCI6MTczMzAzNTI4MH0.wJKHqQbzK8pmLrmHt6cc4lNyJd1WYOVt4MaKLNEhr5g
+
+{
+  "name": "Product 1",
+  "description": "This is a test product",
+  "price": 99.99
+}
+
+###
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "password123"
+}
+
+###
+DELETE  http://localhost:5000/api/products/6
+
+
+###
+GET /api/barang?kategori=pakaian&q=baju&page=1&limit=5
