@@ -44,12 +44,12 @@ const login = async (req, res) => {
   try {
     const admin = await prisma.admin.findUnique({ where: { username } });
     if (!admin) {
-      return res.status(400).json({ error: 'username atau password tidak valid' });
+      return res.status(400).json({ error: 'Nama atau sandi tidak sesuai' });
     }
 
     const isPasswordValid = await bcrypt.compare(password, admin.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ error: 'username atau password tidak valid' });
+      return res.status(400).json({ error: 'Nama atau sandi tidak sesuai' });
     }
 
     const token = jwt.sign({ adminId: admin.admin_id, username: admin.username }, JWT_SECRET, { expiresIn: '15m' });
