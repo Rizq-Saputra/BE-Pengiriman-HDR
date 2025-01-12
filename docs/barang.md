@@ -16,7 +16,6 @@
 {
   "nama_barang": "string",
   "kategori": "string",
-  "berat": "number",
   "harga": "number"
 }
 ```
@@ -32,7 +31,6 @@
     "barang_id": "number",
     "nama_barang": "string",
     "kategori": "string",
-    "berat": "number",
     "harga": "number"
   }
 }
@@ -78,7 +76,6 @@
       "barang_id": "number",
       "nama_barang": "string",
       "kategori": "string",
-      "berat": "number",
       "harga": "number"
     }
   ],
@@ -122,7 +119,6 @@
     "barang_id": "number",
     "nama_barang": "string",
     "kategori": "string",
-    "berat": "number",
     "harga": "number"
   }
 }
@@ -161,7 +157,6 @@
 {
   "nama_barang": "string",
   "kategori": "string",
-  "berat": "number",
   "harga": "number"
 }
 ```
@@ -177,7 +172,6 @@
     "barang_id": "number",
     "nama_barang": "string",
     "kategori": "string",
-    "berat": "number",
     "harga": "number"
   }
 }

@@ -14,7 +14,6 @@ describe('Kendaraan API Endpoints', () => {
             data: {
                 plat_nomor: 'B 1234 XX',
                 jenis_kendaraan: 'Truck',
-                kapasitas: 1000,
                 status_kendaraan: 'tersedia'
             }
         });
@@ -27,7 +26,6 @@ describe('Kendaraan API Endpoints', () => {
                 .send({
                     plat_nomor: 'B 5678 YY',
                     jenis_kendaraan: 'Van',
-                    kapasitas: 500,
                     status_kendaraan: 'Tersedia'
                 });
 
@@ -46,19 +44,6 @@ describe('Kendaraan API Endpoints', () => {
             expect(res.body).toHaveProperty('errors');
         });
 
-        it('should validate kapasitas as number', async () => {
-            const res = await request(app)
-                .post('/api/kendaraan')
-                .send({
-                    plat_nomor: 'B 5678 YY',
-                    jenis_kendaraan: 'Van',
-                    kapasitas: 'invalid',
-                    status_kendaraan: 'Tersedia'
-                });
-
-            expect(res.statusCode).toBe(400);
-            expect(res.body.errors[0].message).toBe('Kapasitas must be a number');
-        });
     });
 
     describe('GET /api/kendaraan', () => {
@@ -82,7 +67,6 @@ describe('Kendaraan API Endpoints', () => {
             expect(res.body.data).toMatchObject({
                 plat_nomor: 'B 1234 XX',
                 jenis_kendaraan: 'Truck',
-                kapasitas: 1000
             });
         });
 
@@ -102,7 +86,6 @@ describe('Kendaraan API Endpoints', () => {
                 .send({
                     plat_nomor: 'B 9999 ZZ',
                     jenis_kendaraan: 'Box',
-                    kapasitas: 750,
                     status_kendaraan: 'dalam_pengiriman'
                 });
 
@@ -111,15 +94,6 @@ describe('Kendaraan API Endpoints', () => {
             expect(res.body.data.status_kendaraan).toBe('dalam_pengiriman');
         });
 
-        it('should validate update data', async () => {
-            const res = await request(app)
-                .put(`/api/kendaraan/${testKendaraan.kendaraan_id}`)
-                .send({
-                    kapasitas: 'invalid'
-                });
-
-            expect(res.statusCode).toBe(400);
-        });
     });
 
     describe('DELETE /api/kendaraan/:id', () => {

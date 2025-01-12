@@ -16,7 +16,6 @@
 {
   "plat_nomor": "string",
   "jenis_kendaraan": "string",
-  "kapasitas": "number",
   "status_kendaraan": "string (optional, default: Tersedia)"
 }
 ```
@@ -32,7 +31,6 @@
     "kendaraan_id": "number",
     "plat_nomor": "string",
     "jenis_kendaraan": "string",
-    "kapasitas": "number",
     "status_kendaraan": "string"
   }
 }
@@ -71,7 +69,6 @@
       "kendaraan_id": "number",
       "plat_nomor": "string",
       "jenis_kendaraan": "string",
-      "kapasitas": "number",
       "status_kendaraan": "string"
     }
   ]
@@ -110,7 +107,6 @@
     "kendaraan_id": "number",
     "plat_nomor": "string",
     "jenis_kendaraan": "string",
-    "kapasitas": "number",
     "status_kendaraan": "string"
   }
 }
@@ -150,7 +146,6 @@
 {
   "plat_nomor": "string",
   "jenis_kendaraan": "string",
-  "kapasitas": "number",
   "status_kendaraan": "string (optional, default: Tersedia)"
 }
 ```
@@ -166,7 +161,6 @@
     "kendaraan_id": "number",
     "plat_nomor": "string",
     "jenis_kendaraan": "string",
-    "kapasitas": "number",
     "status_kendaraan": "string"
   }
 }

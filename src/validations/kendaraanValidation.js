@@ -8,10 +8,6 @@ const kendaraanSchema = Joi.object({
   jenis_kendaraan: Joi.string().required().messages({
     'any.required': 'Jenis kendaraan is required',
   }),
-  kapasitas: Joi.number().required().messages({
-    'any.required': 'Kapasitas is required',
-    'number.base': 'Kapasitas must be a number',
-  }),
   status_kendaraan: Joi.string().required().messages({
     'any.required': 'Status kendaraan is required',
   }),

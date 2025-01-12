@@ -2,23 +2,13 @@ const prisma = require('../prismaClient'); // Prisma client import
 
 // Create Barang
 const createBarang = async (req, res) => {
-  const { nama_barang, kategori, berat, harga } = req.body;
+  const { nama_barang, kategori, harga } = req.body;
   
   try {
-    // Cek apakah nama barang sudah ada
-    const existingBarang = await prisma.barang.findUnique({
-      where: { nama_barang },
-    });
-
-    if (existingBarang) {
-      return res.status(400).json({ message: 'Nama barang sudah digunakan. Harap gunakan nama barang yang berbeda.' });
-    }
-
     const newBarang = await prisma.barang.create({
       data: {
         nama_barang,
         kategori,
-        berat,
         harga,
       },
     });
@@ -96,27 +86,14 @@ const getBarangById = async (req, res) => {
 // Update Barang
 const updateBarang = async (req, res) => {
   const { id } = req.params;
-  const { nama_barang, kategori, berat, harga } = req.body;
+  const { nama_barang, kategori, harga } = req.body;
   
   try {
-    // Cek apakah nama barang yang baru sudah ada (kecuali barang yang sedang di-update)
-    const existingBarang = await prisma.barang.findFirst({
-      where: {
-        nama_barang,
-        NOT: { barang_id: parseInt(id) },
-      },
-    });
-
-    if (existingBarang) {
-      return res.status(400).json({ message: 'Nama barang sudah terdaftar. Harap gunakan nama barang yang berbeda.' });
-    }
-
     const updatedBarang = await prisma.barang.update({
       where: { barang_id: parseInt(id) },
       data: {
         nama_barang,
         kategori,
-        berat,
         harga,
       },
     });

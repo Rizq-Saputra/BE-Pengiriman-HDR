@@ -2,14 +2,13 @@ const prisma = require('../prismaClient'); // Prisma client import
 
 // Create Kendaraan
 const createKendaraan = async (req, res) => {
-  const { plat_nomor, jenis_kendaraan, kapasitas, status_kendaraan = 'Tersedia' } = req.body;
+  const { plat_nomor, jenis_kendaraan, status_kendaraan = 'Tersedia' } = req.body;
   
   try {
     const newKendaraan = await prisma.kendaraan.create({
       data: {
         plat_nomor,
         jenis_kendaraan,
-        kapasitas,
         status_kendaraan: status_kendaraan ? status_kendaraan.toLowerCase() : "tersedia",
       },
     });
@@ -49,7 +48,7 @@ const getKendaraanById = async (req, res) => {
 // Update Kendaraan
 const updateKendaraan = async (req, res) => {
   const { id } = req.params;
-  const { plat_nomor, jenis_kendaraan, kapasitas, status_kendaraan } = req.body;
+  const { plat_nomor, jenis_kendaraan, status_kendaraan } = req.body;
   
   try {
     const updatedKendaraan = await prisma.kendaraan.update({
@@ -57,7 +56,6 @@ const updateKendaraan = async (req, res) => {
       data: {
         plat_nomor,
         jenis_kendaraan,
-        kapasitas,
         status_kendaraan: status_kendaraan ? status_kendaraan.toLowerCase() : "tersedia",
       },
     });

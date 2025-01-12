@@ -11,7 +11,6 @@ describe('Barang Endpoints', () => {
             data: {
                 nama_barang: 'Test Barang',
                 kategori: 'Electronics',
-                berat: 1.5,
                 harga: 100000
             }
         });
@@ -24,7 +23,6 @@ describe('Barang Endpoints', () => {
                 .send({
                     nama_barang: 'Test Barang',
                     kategori: 'Electronics',
-                    berat: 1.5,
                     harga: 100000
                 });
 
@@ -89,7 +87,6 @@ describe('Barang Endpoints', () => {
                 .send({
                     nama_barang: 'Updated Barang',
                     kategori: 'Electronics',
-                    berat: 2.0,
                     harga: 150000
                 });
 

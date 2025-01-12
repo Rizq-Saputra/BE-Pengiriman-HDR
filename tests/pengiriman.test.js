@@ -41,7 +41,6 @@ describe('Pengiriman API Endpoints', () => {
             data: {
                 plat_nomor: 'B 1234 XX',
                 jenis_kendaraan: 'Truck',
-                kapasitas: 1000,
                 status_kendaraan: 'tersedia'
             }
         });
@@ -77,7 +76,6 @@ describe('Pengiriman API Endpoints', () => {
                 nama_barang: 'Test Item',
                 harga: 25000,
                 kategori: 'Makanan',
-                berat: 500,
             }
         });
 

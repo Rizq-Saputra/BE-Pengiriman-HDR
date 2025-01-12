@@ -19,7 +19,6 @@ model Kendaraan {
   kendaraan_id     Int    @id @default(autoincrement())
   plat_nomor       String @unique
   jenis_kendaraan  String
-  kapasitas        Int
   status_kendaraan String
 
   // Relations
@@ -91,7 +90,6 @@ model Barang {
   barang_id   Int     @id @default(autoincrement())
   nama_barang String
   kategori    String
-  berat       Decimal
   harga       Decimal
 
   // Relations

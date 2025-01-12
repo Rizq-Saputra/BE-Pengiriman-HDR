@@ -8,9 +8,6 @@ const barangSchema = Joi.object({
   kategori: Joi.string().required().messages({
     'any.required': 'Jenis barang is required',
   }),
-  berat: Joi.number().optional().messages({
-    'number.base': 'Berat must be a number',
-  }),
   harga: Joi.number().required().messages({
     'any.required': 'Harga is required',
     'number.base': 'Harga must be a number',
