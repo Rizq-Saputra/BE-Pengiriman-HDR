@@ -128,7 +128,7 @@
 
 - **Status Code:** `404`
 
-```json
+````json
 {
   "message": "Barang Tidak ditemukan"
 }
@@ -139,7 +139,7 @@
 {
   "message": "error.message"
 }
-```
+````
 
 ## Update Barang
 
@@ -216,4 +216,3 @@
   "message": "error.message"
 }
 ```
-

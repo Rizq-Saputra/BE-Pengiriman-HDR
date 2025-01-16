@@ -1,7 +1,7 @@
 # API Documentation for Pengiriman
 
 ## Base URL
-All endpoints are prefixed with `/pengiriman`.
+All endpoints are prefixed with `/api/pengiriman`.
 
 ---
 
@@ -15,7 +15,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 1. Create Pengiriman
 - **Method**: POST
-- **Endpoint**: `/pengiriman`
+- **Endpoint**: `/api/pengiriman`
 - **Authentication**: Required
 - **Validation**: `validatePengiriman`
 - **Request Body**:
@@ -37,7 +37,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 2. Get All Pengiriman
 - **Method**: GET
-- **Endpoint**: `/pengiriman`
+- **Endpoint**: `/api/pengiriman`
 - **Authentication**: Required
 - **Response**:
   - **200 OK**: List of pengiriman.
@@ -47,7 +47,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 3. Get Pengiriman By ID
 - **Method**: GET
-- **Endpoint**: `/pengiriman/:id`
+- **Endpoint**: `/api/pengiriman/:id`
 - **Authentication**: Required
 - **Path Parameters**:
   - `id`: The ID of the pengiriman.
@@ -60,7 +60,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 4. Update Pengiriman
 - **Method**: PATCH
-- **Endpoint**: `/pengiriman/:id`
+- **Endpoint**: `/api/pengiriman/:id`
 - **Authentication**: Required
 - **Validation**: `validateUpdatePengiriman`
 - **Path Parameters**:
@@ -81,7 +81,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 5. Delete Pengiriman
 - **Method**: DELETE
-- **Endpoint**: `/pengiriman/:id`
+- **Endpoint**: `/api/pengiriman/:id`
 - **Authentication**: Required
 - **Path Parameters**:
   - `id`: The ID of the pengiriman.
@@ -94,7 +94,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 6. Export Report to Excel
 - **Method**: GET
-- **Endpoint**: `/pengiriman/export`
+- **Endpoint**: `/api/pengiriman/export`
 - **Authentication**: Not required
 - **Response**:
   - **200 OK**: Excel report generated and returned.
@@ -103,7 +103,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 7. Get Pengiriman Stats
 - **Method**: GET
-- **Endpoint**: `/pengiriman/stats`
+- **Endpoint**: `/api/pengiriman/stats`
 - **Authentication**: Required
 - **Response**:
   - **200 OK**: Statistics data.
@@ -113,7 +113,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 8. Get Weekly Pengiriman Stats
 - **Method**: GET
-- **Endpoint**: `/pengiriman/minggu-ini`
+- **Endpoint**: `/api/pengiriman/minggu-ini`
 - **Authentication**: Required
 - **Response**:
   - **200 OK**: Weekly statistics data.
@@ -123,7 +123,7 @@ All routes except `exportReportExcel` and `getPengirimanByResi` require a valid 
 
 ### 9. Get Pengiriman By Resi
 - **Method**: POST
-- **Endpoint**: `/pengiriman-pelanggan`
+- **Endpoint**: `/api/pengiriman-pelanggan`
 - **Authentication**: Not required
 - **Validation**: `validatePengirimanPelanggan`
 - **Request Body**:

@@ -2,7 +2,7 @@
 
 ## Base URL
 
-`/detail-pengiriman`
+`/api/detail-pengiriman`
 
 ---
 
@@ -10,7 +10,7 @@
 
 ### 1. Create Detail Pengiriman
 
-**POST** `/detail-pengiriman`
+**POST** `/api/detail-pengiriman`
 
 #### Request Headers:
 
@@ -65,7 +65,7 @@
 
 ### 2. Get All Detail Pengiriman
 
-**GET** `/detail-pengiriman`
+**GET** `/api/detail-pengiriman`
 
 #### Description:
 
@@ -110,7 +110,7 @@ Retrieve all `Detail Pengiriman` records.
 
 ### 3. Get Detail Pengiriman by ID
 
-**GET** `/detail-pengiriman/:id`
+**GET** `/api/detail-pengiriman/:id`
 
 #### Path Parameters:
 
@@ -163,7 +163,7 @@ Retrieve all `Detail Pengiriman` records.
 
 ### 4. Update Detail Pengiriman
 
-**PUT** `/detail-pengiriman/:id`
+**PUT** `/api/detail-pengiriman/:id`
 
 #### Description:
 
@@ -227,7 +227,7 @@ Mengubah `Detail Pengiriman` berdasarkan ID.
 
 ### 5. Delete Detail Pengiriman
 
-**DELETE** `/detail-pengiriman/:id`
+**DELETE** `/api/detail-pengiriman/:id`
 
 #### Description:
 

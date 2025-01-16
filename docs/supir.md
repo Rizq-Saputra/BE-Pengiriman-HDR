@@ -8,7 +8,7 @@ API Supir digunakan untuk mengelola data supir dalam sistem. API ini mencakup op
 ## 1. Tambah Supir
 
 ### Endpoint
-**POST** `/supir`
+**POST** `/api/supir`
 
 ### Headers
 - `Authorization`: Bearer {token}
@@ -53,7 +53,7 @@ API Supir digunakan untuk mengelola data supir dalam sistem. API ini mencakup op
 ## 2. Lihat Semua Supir
 
 ### Endpoint
-**GET** `/supir`
+**GET** `/api/supir`
 
 ### Headers
 - `Authorization`: Bearer {token}
@@ -88,7 +88,7 @@ API Supir digunakan untuk mengelola data supir dalam sistem. API ini mencakup op
 ## 3. Lihat Detail Supir
 
 ### Endpoint
-**GET** `/supir/:id`
+**GET** `/api/supir/:id`
 
 ### Headers
 - `Authorization`: Bearer {token}
@@ -136,7 +136,7 @@ API Supir digunakan untuk mengelola data supir dalam sistem. API ini mencakup op
 ## 4. Ubah Data Supir
 
 ### Endpoint
-**PATCH** `/supir/:id`
+**PATCH** `/api/supir/:id`
 
 ### Headers
 - `Authorization`: Bearer {token}
@@ -178,7 +178,7 @@ API Supir digunakan untuk mengelola data supir dalam sistem. API ini mencakup op
 ## 5. Hapus Supir
 
 ### Endpoint
-**DELETE** `/supir/:id`
+**DELETE** `/api/supir/:id`
 
 ### Headers
 - `Authorization`: Bearer {token}
@@ -203,5 +203,5 @@ API Supir digunakan untuk mengelola data supir dalam sistem. API ini mencakup op
 ## Catatan
 - Semua endpoint memerlukan autentikasi dengan token JWT.
 - Hanya admin yang diizinkan untuk menambah, mengubah, atau menghapus data supir.
-- Supir dapat mengakses detail mereka sendiri melalui endpoint `GET /supir/:id`.
+- Supir dapat mengakses detail mereka sendiri melalui endpoint `GET /api/supir/:id`.
 
