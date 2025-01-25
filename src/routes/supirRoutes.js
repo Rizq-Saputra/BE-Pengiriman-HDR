@@ -12,7 +12,6 @@ const {
 
 const router = express.Router();
 
-// Protect all routes with authentication
 router.post('/supir', authenticateToken, validateSupir, createSupir);
 router.patch('/supir/:id', authenticateToken, upload.single('gambar_supir'), validateSupirUpdate, updateSupir);
 router.get('/supir/:id', authenticateToken, getSupirById);

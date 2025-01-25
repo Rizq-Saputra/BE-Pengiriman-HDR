@@ -19,7 +19,6 @@ const {
 
 router.post('/pengiriman', authenticateToken, validatePengiriman, createPengiriman);
 router.get('/pengiriman/export', exportReportExcel);
-// router.get('/pengiriman/excel', exportReportExcel);
 router.get('/pengiriman/stats', authenticateToken, getPengirimanStats);
 router.get('/pengiriman/minggu-ini', authenticateToken, getWeeklyPengirimanStats);
 router.get('/pengiriman', authenticateToken, getAllPengiriman);

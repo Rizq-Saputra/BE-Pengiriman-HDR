@@ -239,28 +239,14 @@ const getPengirimanByResi = async (req, res) => {
   }
 }
 
-// get pengiriman stats
 const getPengirimanStats = async (req, res) => {
   try {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
-    // Get stats for "Selesai" status only for today
+    // Get stats for "Selesai" status (no date filter)
     const selesaiStats = await prisma.pengiriman.groupBy({
       by: ["status_pengiriman"],
       _count: { status_pengiriman: true },
       where: {
-        AND: [
-          { status_pengiriman: "Selesai" },
-          {
-            tanggal_pengiriman: {
-              gte: today,
-              lt: tomorrow,
-            },
-          },
-        ],
+        status_pengiriman: "Selesai",
       },
     });
 

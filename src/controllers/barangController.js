@@ -1,10 +1,10 @@
-const prisma = require('../prismaClient'); // Prisma client import
+const prisma = require("../prismaClient"); // Prisma client import
 
 // Create Barang
 const createBarang = async (req, res) => {
-  const { nama_barang, kategori, harga } = req.body;
-  
   try {
+    const { nama_barang, kategori, harga } = req.body;
+
     const newBarang = await prisma.barang.create({
       data: {
         nama_barang,
@@ -12,9 +12,23 @@ const createBarang = async (req, res) => {
         harga,
       },
     });
-    res.status(201).json({ message: 'Berhasil menambahkan data Barang', data: newBarang });
+
+    res.status(201).json({
+      message: "Barang berhasil ditambahkan",
+      data: newBarang,
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (error.code === "P2002") {
+      // Prisma unique constraint violation
+      res.status(400).json({
+        message: "Nama barang sudah ada. Silakan gunakan nama yang berbeda.",
+      });
+    } else {
+      res.status(500).json({
+        message: "Terjadi kesalahan pada server",
+        error: error.message,
+      });
+    }
   }
 };
 
@@ -22,7 +36,7 @@ const createBarang = async (req, res) => {
 const getBarang = async (req, res) => {
   const kategori = req.query.kategori;
   const searchQuery = req.query.q;
-  const getAllData = req.query.all_data === 'true';
+  const getAllData = req.query.all_data === "true";
   const page = parseInt(req.query.page, 10) || 1;
   const limit = parseInt(req.query.limit, 10) || 12;
   const skip = (page - 1) * limit;
@@ -37,7 +51,7 @@ const getBarang = async (req, res) => {
     if (searchQuery) {
       where.nama_barang = {
         contains: searchQuery,
-        mode: 'insensitive',
+        mode: "insensitive",
       };
     }
 
@@ -50,16 +64,18 @@ const getBarang = async (req, res) => {
     const totalBarang = await prisma.barang.count({ where });
 
     res.status(200).json({
-      message: 'Berhasil Mendapatkan data Barang',
+      message: "Berhasil Mendapatkan data Barang",
       data: barangList,
-      ...(getAllData ? {} : {
-        meta: {
-          total: totalBarang,
-          page,
-          limit,
-          totalPages: Math.ceil(totalBarang / limit),
-        }
-      })
+      ...(getAllData
+        ? {}
+        : {
+            meta: {
+              total: totalBarang,
+              page,
+              limit,
+              totalPages: Math.ceil(totalBarang / limit),
+            },
+          }),
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -74,9 +90,11 @@ const getBarangById = async (req, res) => {
       where: { barang_id: parseInt(id) },
     });
     if (barang) {
-      res.status(200).json({ message: 'Berhasil Mendapatkan Detail Barang', data: barang });
+      res
+        .status(200)
+        .json({ message: "Berhasil Mendapatkan Detail Barang", data: barang });
     } else {
-      res.status(404).json({ message: 'Barang Tidak ditemukan' });
+      res.status(404).json({ message: "Barang Tidak ditemukan" });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -87,7 +105,7 @@ const getBarangById = async (req, res) => {
 const updateBarang = async (req, res) => {
   const { id } = req.params;
   const { nama_barang, kategori, harga } = req.body;
-  
+
   try {
     const updatedBarang = await prisma.barang.update({
       where: { barang_id: parseInt(id) },
@@ -97,7 +115,9 @@ const updateBarang = async (req, res) => {
         harga,
       },
     });
-    res.status(200).json({ message: 'Berhasil Mengubah Barang', data: updatedBarang });
+    res
+      .status(200)
+      .json({ message: "Berhasil Mengubah Barang", data: updatedBarang });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -110,10 +130,16 @@ const deleteBarang = async (req, res) => {
     await prisma.barang.delete({
       where: { barang_id: parseInt(id) },
     });
-    res.status(200).json({ message: 'Barang Berhasil Terhapus' });
+    res.status(200).json({ message: "Barang Berhasil Terhapus" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { createBarang, getBarang, getBarangById, updateBarang, deleteBarang };
+module.exports = {
+  createBarang,
+  getBarang,
+  getBarangById,
+  updateBarang,
+  deleteBarang,
+};

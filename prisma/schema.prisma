@@ -21,7 +21,6 @@ model Kendaraan {
   jenis_kendaraan  String
   status_kendaraan String
 
-  // Relations
   Pengiriman Pengiriman[]
 }
 
@@ -35,7 +34,6 @@ model Supir {
   password       String
   refreshToken   String? @db.Text // Add @db.Text to handle long tokens
 
-  // Relations
   Pengiriman Pengiriman[]
 }
 
@@ -56,7 +54,6 @@ model Pengiriman {
   supir_id     Int
   pelanggan_id Int
 
-  // Relations
   Kendaraan        Kendaraan          @relation(fields: [kendaraan_id], references: [kendaraan_id])
   Supir            Supir              @relation(fields: [supir_id], references: [supir_id])
   Pelanggan        Pelanggan          @relation(fields: [pelanggan_id], references: [pelanggan_id])
@@ -68,7 +65,6 @@ model Pelanggan {
   nama_pelanggan String
   no_telepon     String       @unique
   email          String       @unique
-  // Relations
   Pengiriman     Pengiriman[]
 }
 
@@ -81,17 +77,15 @@ model DetailPengiriman {
   pengiriman_id Int
   barang_id     Int
 
-  // Relations
   Pengiriman Pengiriman @relation("PengirimanToDetail", fields: [pengiriman_id], references: [pengiriman_id], onDelete: Cascade)
   Barang     Barang     @relation(fields: [barang_id], references: [barang_id])
 }
 
 model Barang {
   barang_id   Int     @id @default(autoincrement())
-  nama_barang String
+  nama_barang String @unique
   kategori    String
   harga       Decimal
 
-  // Relations
   DetailPengiriman DetailPengiriman[]
 }
