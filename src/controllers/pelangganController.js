@@ -2,7 +2,7 @@ const prisma = require('../prismaClient'); // Prisma client import
 
 // Create Pelanggan
 const createPelanggan = async (req, res) => {
-  const { nama_pelanggan, no_telepon, email } = req.body;
+  const { nama_pelanggan, no_telepon } = req.body;
   const no_telepon_cleaned = no_telepon.replace(/\D/g, ''); // Remove all non-numeric characters
 
   try {
@@ -10,7 +10,6 @@ const createPelanggan = async (req, res) => {
       data: {
         nama_pelanggan,
         no_telepon: no_telepon_cleaned,
-        email,
       },
     });
     res.status(201).json({ message: 'Pelanggan berhasil ditambahkan', data: newPelanggan });
@@ -49,7 +48,7 @@ const getPelangganById = async (req, res) => {
 // Update Pelanggan
 const updatePelanggan = async (req, res) => {
   const { id } = req.params;
-  const { nama_pelanggan, no_telepon, email } = req.body;
+  const { nama_pelanggan, no_telepon } = req.body;
 
   try {
     const updatedPelanggan = await prisma.pelanggan.update({
@@ -57,7 +56,6 @@ const updatePelanggan = async (req, res) => {
       data: {
         nama_pelanggan,
         no_telepon,
-        email,
       },
     });
     res.status(200).json({ message: 'Berhasil mengubah data pelanggan', data: updatedPelanggan });

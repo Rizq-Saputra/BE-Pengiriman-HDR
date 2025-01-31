@@ -54,7 +54,6 @@ describe("Pengiriman API Endpoints", () => {
       data: {
         nama_pelanggan: "Test User",
         no_telepon: "081234567890",
-        email: "test@mail.com",
       },
     });
 

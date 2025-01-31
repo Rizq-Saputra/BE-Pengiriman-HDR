@@ -16,7 +16,6 @@
 {
   "nama_pelanggan": "string",
   "no_telepon": "string",
-  "email": "string"
 }
 ```
 
@@ -31,7 +30,6 @@
     "pelanggan_id": "number",
     "nama_pelanggan": "string",
     "no_telepon": "string",
-    "email": "string"
   }
 }
 ```
@@ -70,7 +68,6 @@
       "pelanggan_id": "number",
       "nama_pelanggan": "string",
       "no_telepon": "string",
-      "email": "string"
     }
   ]
 }
@@ -108,7 +105,6 @@
     "pelanggan_id": "number",
     "nama_pelanggan": "string",
     "no_telepon": "string",
-    "email": "string"
   }
 }
 ```
@@ -148,7 +144,6 @@
 {
   "nama_pelanggan": "string",
   "no_telepon": "string",
-  "email": "string"
 }
 ```
 
@@ -163,8 +158,7 @@
     "pelanggan_id": "number",
     "nama_pelanggan": "string",
     "no_telepon": "string",
-    "email": "string"
-  }
+}
 }
 ```
 

@@ -8,10 +8,6 @@ const pelangganSchema = Joi.object({
   no_telepon: Joi.string().required().messages({
     "any.required": "No telepon is required",
   }),
-  email: Joi.string().email().required().messages({
-    "any.required": "Email is required",
-    "string.email": "Email must be valid",
-  }),
 });
 
 // Validation middleware for Pelanggan

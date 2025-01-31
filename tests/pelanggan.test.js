@@ -15,7 +15,6 @@ describe("Pelanggan API Endpoints", () => {
       data: {
         nama_pelanggan: "Test User",
         no_telepon: "081234567890",
-        email: "test@example.com",
       },
     });
 
@@ -46,7 +45,6 @@ describe("Pelanggan API Endpoints", () => {
       const res = await request(app).post("/api/pelanggan").send({
         nama_pelanggan: "John Doe",
         no_telepon: "087654321098",
-        email: "john@example.com",
       });
 
       expect(res.statusCode).toBe(201);
@@ -59,7 +57,6 @@ describe("Pelanggan API Endpoints", () => {
       const res = await request(app).post("/api/pelanggan").send({
         nama_pelanggan: "Jane Doe",
         no_telepon: "+62-812-3456-7890",
-        email: "jane@example.com",
       });
 
       expect(res.statusCode).toBe(201);
@@ -73,16 +70,6 @@ describe("Pelanggan API Endpoints", () => {
       expect(res.body).toHaveProperty("errors");
     });
 
-    it("should validate email format", async () => {
-      const res = await request(app).post("/api/pelanggan").send({
-        nama_pelanggan: "Invalid Email User",
-        no_telepon: "081234567890",
-        email: "invalid-email",
-      });
-
-      expect(res.statusCode).toBe(400);
-      expect(res.body.errors[0].message).toBe("Email must be valid");
-    });
   });
 
   describe("GET /api/pelanggan", () => {
@@ -107,7 +94,6 @@ describe("Pelanggan API Endpoints", () => {
       expect(res.statusCode).toBe(200);
       expect(res.body.data).toMatchObject({
         nama_pelanggan: "Test User",
-        email: "test@example.com",
       });
     });
 
@@ -126,19 +112,16 @@ describe("Pelanggan API Endpoints", () => {
         .send({
           nama_pelanggan: "Updated Name",
           no_telepon: "089999999999",
-          email: "updated@example.com",
         });
 
       expect(res.statusCode).toBe(200);
       expect(res.body.data.nama_pelanggan).toBe("Updated Name");
-      expect(res.body.data.email).toBe("updated@example.com");
     });
 
     it("should handle updating non-existent pelanggan", async () => {
       const res = await request(app).put("/api/pelanggan/999999").send({
         nama_pelanggan: "Updated Name",
         no_telepon: "089999999999",
-        email: "updated@example.com",
       });
 
       expect(res.statusCode).toBe(500);
