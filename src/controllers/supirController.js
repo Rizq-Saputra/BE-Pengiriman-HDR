@@ -19,7 +19,6 @@ const checkAdminOrSupir = (req, res) => {
   return null;
 };
 
-// Create Supir
 const createSupir = async (req, res) => {
   const adminCheck = checkAdmin(req, res);
   if (adminCheck) return adminCheck;
@@ -30,7 +29,6 @@ const createSupir = async (req, res) => {
     jumlah_antaran,
     status_supir = "Tersedia",
     password,
-    gambar_supir,
   } = req.body;
 
   const jumlahAntaranInt = parseInt(jumlah_antaran, 10);
@@ -41,7 +39,6 @@ const createSupir = async (req, res) => {
         no_telepon: no_telepon.replace(/\D/g, ""),
         jumlah_antaran: jumlahAntaranInt,
         status_supir,
-        gambar_supir,
         password: bcrypt.hashSync(password, 10),
       },
     });
@@ -117,9 +114,7 @@ const updateSupir = async (req, res) => {
     jumlah_antaran,
     status_supir,
     password,
-    gambar_supir,
   } = req.body;
-  // const gambar_supir = req.file ? req.file.path : null;
 
   try {
     const updatedSupir = await prisma.supir.update({
@@ -129,7 +124,6 @@ const updateSupir = async (req, res) => {
         no_telepon,
         jumlah_antaran,
         status_supir,
-        gambar_supir,
         password: password ? bcrypt.hashSync(password, 10) : undefined,
       },
     });

@@ -518,15 +518,15 @@ const exportReport = async (req, res) => {
 
 const exportReportExcel = async (req, res) => {
   try {
-    // Fetch data from the DetailPengiriman table
+
     const allDetailPengiriman = await prisma.detailPengiriman.findMany({
       include: {
-        Barang: true, // Relasi ke tabel Barang
+        Barang: true,
         Pengiriman: {
           include: {
-            Pelanggan: true, // Relasi ke Pelanggan
-            Supir: true, // Relasi ke Supir
-            Kendaraan: true, // Relasi ke Kendaraan
+            Pelanggan: true,
+            Supir: true,
+            Kendaraan: true,
           },
         },
       },

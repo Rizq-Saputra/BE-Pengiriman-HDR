@@ -2,7 +2,6 @@ const Joi = require('joi');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// Supir validation schema
 const supirSchema = Joi.object({
   nama_supir: Joi.string().required().messages({
     'any.required': 'Nama supir is required',
@@ -27,15 +26,11 @@ const supirSchema = Joi.object({
   }),
   status_supir: Joi.string().optional().messages({
   }),
-  gambar_supir: Joi.string().required().messages({
-    'any.required': 'Foto supir harus diisi',
-  }),
   password: Joi.string().required().messages({
     'any.required': 'Password is required',
   }),
 });
 
-// Add a new schema for updates that makes all fields optional
 const supirUpdateSchema = Joi.object({
   nama_supir: Joi.string().optional(),
   no_telepon: Joi.string()
@@ -52,7 +47,6 @@ const supirUpdateSchema = Joi.object({
     }),
   jumlah_antaran: Joi.number().optional(),
   status_supir: Joi.string().optional(),
-  gambar_supir: Joi.string().optional(),
   password: Joi.string().optional(),
 });
 

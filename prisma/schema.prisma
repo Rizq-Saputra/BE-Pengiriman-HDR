@@ -30,7 +30,6 @@ model Supir {
   no_telepon     String  @unique
   jumlah_antaran Int
   status_supir   String
-  gambar_supir   String?
   password       String
   refreshToken   String? @db.Text // Add @db.Text to handle long tokens
 
