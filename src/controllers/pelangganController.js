@@ -14,6 +14,7 @@ const createPelanggan = async (req, res) => {
     });
     res.status(201).json({ message: 'Pelanggan berhasil ditambahkan', data: newPelanggan });
   } catch (error) {
+    console.error(error); // Log error untuk debugging
     res.status(500).json({ message: 'Gagal menambahkan pelanggan', error: error.message });
   }
 };
