@@ -27,7 +27,6 @@ describe("Supir Controller Tests", () => {
       const supirData = {
         nama_supir: "Test Sopir",
         no_telepon: "081234567890",
-        gambar_supir: "test.jpg",
         jumlah_antaran: 0,
         status_supir: "Tersedia",
         password: "testpass123",

@@ -18,15 +18,16 @@ describe("Barang Endpoints", () => {
 
   describe("POST /api/barang", () => {
     it("should create a new barang", async () => {
+      const uniqueName = `Test Barang ${Date.now()}`; // Membuat nama unik
       const res = await request(app).post("/api/barang").send({
-        nama_barang: "Test Barang",
+        nama_barang: uniqueName,
         kategori: "Electronics",
         harga: 100000,
       });
-
+    
       expect(res.statusCode).toBe(201);
       expect(res.body.data).toHaveProperty("barang_id");
-      expect(res.body.data.nama_barang).toBe("Test Barang");
+      expect(res.body.data.nama_barang).toBe(uniqueName);
       testBarang = res.body.data;
     });
 

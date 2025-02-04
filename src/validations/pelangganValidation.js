@@ -3,10 +3,10 @@ const Joi = require("joi");
 // Pelanggan validation schema
 const pelangganSchema = Joi.object({
   nama_pelanggan: Joi.string().required().messages({
-    "any.required": "Nama pelanggan is required",
+    "any.required": "Nama pelanggan harus diisi",
   }),
   no_telepon: Joi.string().required().messages({
-    "any.required": "No telepon is required",
+    "any.required": "No telepon harus diisi",
   }),
 });
 
