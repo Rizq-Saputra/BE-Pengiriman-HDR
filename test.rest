@@ -36,4 +36,20 @@ DELETE  http://localhost:5000/api/products/6
 
 
 ###
-GET /api/barang?kategori=pakaian&q=baju&page=1&limit=5
+POST https://hdr-api-8c6cc07fd1c7.herokuapp.com/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin2",
+  "password": "password"
+}
+
+###
+POST https://hdr-api-8c6cc07fd1c7.herokuapp.com/api/pelanggan
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoyLCJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTczODcxMzkzMCwiZXhwIjoxNzM4NzE0ODMwfQ.q6REBa4zbZ-5RFT-X3FodfmOjJEqICdE_HjurCoLAlU
+
+{
+  "nama_pelanggan": "tes",
+  "no_telepon": "0222222"
+}
