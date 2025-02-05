@@ -62,7 +62,7 @@ model Pengiriman {
 model Pelanggan {
   pelanggan_id   Int          @id @default(autoincrement())
   nama_pelanggan String     
-  no_telepon     String     @unique
+  no_telepon     String     
   Pengiriman     Pengiriman[]
 }
 
