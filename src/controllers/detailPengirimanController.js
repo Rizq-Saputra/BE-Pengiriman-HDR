@@ -6,7 +6,6 @@ const createDetailPengiriman = async (req, res) => {
   const detailPengirimanArray = Array.isArray(req.body) ? req.body : [req.body];
 
   try {
-    // get Barang before creating detail pengiriman to calculate subtotal
     const barangIds = detailPengirimanArray.map(detail => parseInt(detail.barang_id));
 
     const barangs = await prisma.barang.findMany({
@@ -23,7 +22,7 @@ const createDetailPengiriman = async (req, res) => {
       })),
     });
 
-    // update pengiriman total harga
+    // Update pengiriman total harga
     const pengiriman = await prisma.pengiriman.findUnique({
       where: { pengiriman_id: detailPengirimanArray[0].pengiriman_id },
       include: {
@@ -31,8 +30,10 @@ const createDetailPengiriman = async (req, res) => {
       },
     });
 
-
-    const totalHarga = parseInt(pengiriman.total) + pengiriman.DetailPengiriman.reduce((acc, detail) => acc + parseInt(detail.subtotal), 0);
+    // Calculate total harga
+    const totalHarga = pengiriman.DetailPengiriman.reduce((acc, detail) => {
+      return acc + parseInt(detail.subtotal); // Ensure subtotal is parsed as integer
+    }, 0);
 
     await prisma.pengiriman.update({
       where: { pengiriman_id: detailPengirimanArray[0].pengiriman_id },

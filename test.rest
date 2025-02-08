@@ -47,9 +47,9 @@ Content-Type: application/json
 ###
 POST https://hdr-api-8c6cc07fd1c7.herokuapp.com/api/pelanggan
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoyLCJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTczODcxMzkzMCwiZXhwIjoxNzM4NzE0ODMwfQ.q6REBa4zbZ-5RFT-X3FodfmOjJEqICdE_HjurCoLAlU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoyLCJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTczODcxNjMzMSwiZXhwIjoxNzM4NzE3MjMxfQ.zxG-3a62_vpj18L9AIinSOysjz2j8FYHC4y5e7OlWno
 
 {
-  "nama_pelanggan": "tes",
+  "nama_pelanggan": "tes2",
   "no_telepon": "0222222"
 }
