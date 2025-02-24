@@ -55,7 +55,7 @@ describe("Pelanggan API Endpoints", () => {
 
     it("should clean phone number of non-numeric characters", async () => {
       const res = await request(app).post("/api/pelanggan").send({
-        nama_pelanggan: "Jane Doe",
+        nama_pelanggan: "Agus",
         no_telepon: "+62-812-3456-7890",
       });
 
@@ -110,17 +110,17 @@ describe("Pelanggan API Endpoints", () => {
       const res = await request(app)
         .put(`/api/pelanggan/${testPelanggan.pelanggan_id}`)
         .send({
-          nama_pelanggan: "Updated Name",
+          nama_pelanggan: "Nama Baru",
           no_telepon: "089999999999",
         });
 
       expect(res.statusCode).toBe(200);
-      expect(res.body.data.nama_pelanggan).toBe("Updated Name");
+      expect(res.body.data.nama_pelanggan).toBe("Nama Baru");
     });
 
     it("should handle updating non-existent pelanggan", async () => {
       const res = await request(app).put("/api/pelanggan/999999").send({
-        nama_pelanggan: "Updated Name",
+        nama_pelanggan: "Nama Baru",
         no_telepon: "089999999999",
       });
 

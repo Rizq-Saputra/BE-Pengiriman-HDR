@@ -13,7 +13,7 @@ describe("Kendaraan API Endpoints", () => {
     testKendaraan = await prisma.kendaraan.create({
       data: {
         plat_nomor: "B 1234 XX",
-        jenis_kendaraan: "Truck",
+        jenis_kendaraan: "TRAGA",
         status_kendaraan: "tersedia",
       },
     });
@@ -23,7 +23,7 @@ describe("Kendaraan API Endpoints", () => {
     it("should create a new kendaraan", async () => {
       const res = await request(app).post("/api/kendaraan").send({
         plat_nomor: "B 5678 YY",
-        jenis_kendaraan: "Van",
+        jenis_kendaraan: "L300",
         status_kendaraan: "Tersedia",
       });
 
@@ -61,7 +61,7 @@ describe("Kendaraan API Endpoints", () => {
       expect(res.statusCode).toBe(200);
       expect(res.body.data).toMatchObject({
         plat_nomor: "B 1234 XX",
-        jenis_kendaraan: "Truck",
+        jenis_kendaraan: "TRAGA",
       });
     });
 

@@ -291,10 +291,14 @@ const getPengirimanStats = async (req, res) => {
 // get weekly pengiriman stats
 const getWeeklyPengirimanStats = async (req, res) => {
   try {
+    const { weekOffset = 0 } = req.query; // Ambil weekOffset dari query parameter
     const today = new Date();
     const dayOfWeek = today.getDay();
+
     const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1)); // Adjust when day is Sunday
+    startOfWeek.setDate(
+      today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1) - (weekOffset * 7)
+    );
     startOfWeek.setHours(0, 0, 0, 0);
 
     const endOfWeek = new Date(startOfWeek);
@@ -315,12 +319,17 @@ const getWeeklyPengirimanStats = async (req, res) => {
     });
 
     res.status(200).json({
-      message: "Berhasil mendapatkan jumlah pengiriman minggu ini",
+      message: "Berhasil mendapatkan jumlah pengiriman",
       data: pengirimanCount,
+      meta: {
+        startOfWeek: startOfWeek.toISOString(),
+        endOfWeek: endOfWeek.toISOString(),
+        weekOffset: parseInt(weekOffset, 10),
+      },
     });
   } catch (error) {
     res.status(500).json({
-      message: "Gagal mendapatkan jumlah pengiriman minggu ini",
+      message: "Gagal mendapatkan jumlah pengiriman",
       error: error.message,
     });
   }
@@ -339,6 +348,7 @@ const updatePengiriman = async (req, res) => {
     deskripsi,
     ongkir,
     total,
+    pembayaran,
     kendaraan_id,
     supir_id,
     pelanggan_id,
@@ -355,6 +365,7 @@ const updatePengiriman = async (req, res) => {
         deskripsi,
         ongkir,
         total,
+        pembayaran,
         kendaraan_id,
         supir_id,
         pelanggan_id,

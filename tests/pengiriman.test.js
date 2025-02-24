@@ -30,7 +30,7 @@ describe("Pengiriman API Endpoints", () => {
     let kendaraan = await prisma.kendaraan.create({
       data: {
         plat_nomor: "B 1234 XX",
-        jenis_kendaraan: "Truck",
+        jenis_kendaraan: "TRAGA",
         status_kendaraan: "tersedia",
       },
     });
@@ -62,8 +62,8 @@ describe("Pengiriman API Endpoints", () => {
     let barang = await prisma.barang.create({
       data: {
         nama_barang: "Test Item",
-        harga: 25000,
-        kategori: "Makanan",
+        harga: 35000,
+        kategori: "Meranti",
       },
     });
 

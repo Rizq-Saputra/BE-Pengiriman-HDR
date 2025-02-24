@@ -6,23 +6,23 @@ describe("Barang Endpoints", () => {
   let testBarang;
 
   beforeEach(async () => {
-    await prisma.barang.deleteMany(); // Runs before every test
+    await prisma.barang.deleteMany();
     testBarang = await prisma.barang.create({
       data: {
-        nama_barang: "Test Barang",
-        kategori: "Electronics",
-        harga: 100000,
+        nama_barang: "Kayu Meranti 5x10x4",
+        kategori: "Meranti",
+        harga: 50000,
       },
     });
   });
 
   describe("POST /api/barang", () => {
     it("should create a new barang", async () => {
-      const uniqueName = `Test Barang ${Date.now()}`; // Membuat nama unik
+      const uniqueName = `Test Barang ${Date.now()}`;
       const res = await request(app).post("/api/barang").send({
         nama_barang: uniqueName,
-        kategori: "Electronics",
-        harga: 100000,
+        kategori: "Meranti",
+        harga: 50000,
       });
     
       expect(res.statusCode).toBe(201);
@@ -53,10 +53,10 @@ describe("Barang Endpoints", () => {
     it("should filter barang by kategori", async () => {
       const res = await request(app)
         .get("/api/barang")
-        .query({ kategori: "Electronics" });
+        .query({ kategori: "Meranti" });
 
       expect(res.statusCode).toBe(200);
-      expect(res.body.data[0].kategori).toBe("Electronics");
+      expect(res.body.data[0].kategori).toBe("Meranti");
     });
   });
 
@@ -80,9 +80,9 @@ describe("Barang Endpoints", () => {
       const res = await request(app)
         .put(`/api/barang/${testBarang.barang_id}`)
         .send({
-          nama_barang: "Updated Barang",
-          kategori: "Electronics",
-          harga: 150000,
+          nama_barang: "Kayu Meranti 5x7x4",
+          kategori: "Meranti",
+          harga: 35000,
         });
 
       expect(res.statusCode).toBe(200);
